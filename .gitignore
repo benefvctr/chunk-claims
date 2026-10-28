@@ -1,0 +1,25 @@
+# Gradle / Loom
+.gradle/
+build/
+out/
+run/
+classes/
+*.launch
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+bin/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Hand-off copies of the built jar
+dist/*.jar

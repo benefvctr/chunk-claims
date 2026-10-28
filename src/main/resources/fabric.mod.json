@@ -1,0 +1,30 @@
+{
+	"schemaVersion": 1,
+	"id": "chunkclaims",
+	"version": "${version}",
+	"name": "Chunk Claims",
+	"description": "Progressive chunk claiming for survival servers: buy land with resources, trust players per territory, and keep griefers out.",
+	"authors": [
+		"Benefvctr"
+	],
+	"license": "All-Rights-Reserved",
+	"icon": "assets/chunkclaims/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.benefvctr.chunkclaims.ChunkClaims"
+		],
+		"client": [
+			"com.benefvctr.chunkclaims.client.ChunkClaimsClient"
+		]
+	},
+	"mixins": [
+		"chunkclaims.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.20.1",
+		"minecraft": "~26.3",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

@@ -1,0 +1,16 @@
+{
+	"schemaVersion": 1,
+	"id": "chunkclaims-gametest",
+	"version": "1.0.0",
+	"name": "Chunk Claims Gametests",
+	"environment": "*",
+	"entrypoints": {
+		"fabric-client-gametest": [
+			"com.benefvctr.chunkclaims.gametest.ChunkClaimsClientGameTest"
+		]
+	},
+	"depends": {
+		"chunkclaims": "*",
+		"fabric-api": "*"
+	}
+}

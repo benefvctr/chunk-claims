@@ -1,0 +1,20 @@
+{
+	"required": true,
+	"package": "com.benefvctr.chunkclaims.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"DispenserBlockMixin",
+		"EntityMixin",
+		"FarmlandBlockMixin",
+		"FireBlockMixin",
+		"FlowingFluidMixin",
+		"PistonStructureResolverMixin",
+		"ServerExplosionMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
