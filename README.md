@@ -146,10 +146,19 @@ Builds the jar and runs the unit tests for the claim core.
 ./gradlew runClientGameTest
 ```
 
-Starts the game, creates a singleplayer world and plays through the main flows: buy a
-chunk with the hotkeys, get refused inside a buffer, open the permissions menu, and throw
-real griefs at a rival claim (block breaking, TNT, lava, hitting a cow), with control
-cases on unclaimed land. Screenshots land in `build/run/clientGameTest/screenshots`.
+Starts the game and runs two scripted tests, then closes it. No Minecraft account is
+needed; Fabric's dev setup downloads the game files itself.
+
+1. A flat test world: buy a chunk with the hotkeys, get refused inside a buffer, open the
+   permissions menu, and throw real griefs at a rival claim (block breaking, TNT, lava,
+   hitting a cow), with control cases on unclaimed land.
+2. A normally generated world (seed `chunkclaims`, a spruce forest by a lake): trees, a
+   pond and a cave room placed across claim borders, to check the overlay follows real
+   ground. Tree and water views are also shot with edit mode off for a before/after diff.
+
+Screenshots land in `build/run/clientGameTest/screenshots`; a selection is kept in
+`docs/screenshots`. Known look: borders draw on the ground, so under dense forest they
+are hidden from above, and blue on water is low contrast.
 
 `./gradlew runClient` and `./gradlew runServer` start a dev client or server. The dev
 server needs `eula=true` in `run/eula.txt`, which you should only set if you accept the

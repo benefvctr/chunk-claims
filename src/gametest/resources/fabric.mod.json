@@ -6,7 +6,8 @@
 	"environment": "*",
 	"entrypoints": {
 		"fabric-client-gametest": [
-			"com.benefvctr.chunkclaims.gametest.ChunkClaimsClientGameTest"
+			"com.benefvctr.chunkclaims.gametest.ChunkClaimsClientGameTest",
+			"com.benefvctr.chunkclaims.gametest.TerrainOverlayGameTest"
 		]
 	},
 	"depends": {
