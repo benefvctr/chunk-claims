@@ -25,12 +25,22 @@ loom {
 
 fabricApi {
 	// In-game checks driven by Fabric's client gametest API: src/gametest, run with
-	// ./gradlew runClientGameTest. Singleplayer only, so no server EULA is involved.
+	// ./gradlew runClientGameTest. The singleplayer tests need no server EULA; the
+	// dedicated-server test only runs with -PacceptMinecraftEula (see below).
 	configureTests {
 		createSourceSet = true
 		modId = "chunkclaims-gametest"
 		enableGameTests = false
 		enableClientGameTests = true
+	}
+}
+
+// A dedicated server will not start until its EULA is accepted. Passing
+// -PacceptMinecraftEula means you accept https://aka.ms/MinecraftEULA, and lets
+// DedicatedServerGameTest write eula=true for its local test server.
+tasks.matching { it.name == "runClientGameTest" }.configureEach {
+	if (project.hasProperty("acceptMinecraftEula")) {
+		jvmArgs "-Dchunkclaims.gametest.acceptEula=true"
 	}
 }
 

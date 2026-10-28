@@ -149,7 +149,7 @@ public class ChunkClaimsClientGameTest implements FabricClientGameTest {
 
 			// Double-clicking a name (the habit from the server and world lists) still trusts once.
 			clickPermissionsRow(context, 1);
-			context.getInput().pressMouse(0);
+			context.getInput().pressMouse(InputConstants.MOUSE_BUTTON_LEFT);
 			connection.waitForServerboundPackets();
 			connection.waitForClientboundPackets();
 			context.waitTicks(3);
@@ -171,7 +171,7 @@ public class ChunkClaimsClientGameTest implements FabricClientGameTest {
 		});
 		context.getInput().setCursorPos(cursor[0], cursor[1]);
 		context.waitTicks(2);
-		context.getInput().pressMouse(0);
+		context.getInput().pressMouse(InputConstants.MOUSE_BUTTON_LEFT);
 	}
 
 	/** Runs the grief attempts and returns the lava target position (checked after it has had time to flow). */
@@ -221,6 +221,15 @@ public class ChunkClaimsClientGameTest implements FabricClientGameTest {
 			}
 		}
 		level.setBlockAndUpdate(new BlockPos(rivalX - 1, y, bz), Blocks.LAVA.defaultBlockState());
+
+		// Once the rival trusts us, the same kind of break goes through.
+		ClaimPos rivalChunk = new ClaimPos(OVERWORLD, hx + 4, hz);
+		ClaimManager.current().registry().setTrusted(rivalChunk, RIVAL, player.getUUID(), true);
+		BlockPos trustedTarget = target.north(2);
+		level.setBlockAndUpdate(trustedTarget, Blocks.STONE.defaultBlockState());
+		check(player.gameMode.destroyBlock(trustedTarget), "a trusted player can break blocks in the claim");
+		check(level.getBlockState(trustedTarget).isAir(), "the trusted player's break removed the block");
+		ClaimManager.current().registry().setTrusted(rivalChunk, RIVAL, player.getUUID(), false);
 		return new int[] {rivalX, y, bz};
 	}
 
