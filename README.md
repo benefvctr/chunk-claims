@@ -11,15 +11,16 @@ later), trust other players per territory, and everyone else can walk in but can
 Left: standing in a red (too close) chunk, with your blue territory below, a rival's purple
 territory above, and the faint red edge of the rival's buffer zone between them.
 
-**Handing it to a server owner:** send `dist/chunkclaims-1.0.0.jar` and `dist/PLAYTEST.md`
-(install steps plus a two-player test checklist).
+**Server owners:** start with [docs/PLAYTEST.md](docs/PLAYTEST.md) (install steps plus a
+two-player test checklist).
 
 The full design and the reasoning behind each call is in
 [docs/superpowers/specs/2026-10-28-chunk-claims-design.md](docs/superpowers/specs/2026-10-28-chunk-claims-design.md).
 
 ## Install
 
-One jar does both jobs. Put `build/libs/chunkclaims-1.0.0.jar` plus
+One jar does both jobs. Download `chunkclaims-1.0.0.jar` from
+[Releases](https://github.com/benefvctr/chunk-claims/releases/latest) and put it plus
 [Fabric API](https://modrinth.com/mod/fabric-api) `0.165.0+26.3` (or newer for 26.3) in:
 
 - the **server's** `mods/` folder (claims, economy, protection), and

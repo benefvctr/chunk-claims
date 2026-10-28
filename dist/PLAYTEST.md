@@ -7,7 +7,8 @@ server yet. Twenty minutes with two players will tell us if anything is off.
 
 You need Minecraft **26.3** with the Fabric Loader (0.20.1 or newer).
 
-1. Download Fabric API for 26.3 from https://modrinth.com/mod/fabric-api (version
+1. Download `chunkclaims-1.0.0.jar` from https://github.com/benefvctr/chunk-claims/releases/latest
+   and Fabric API for 26.3 from https://modrinth.com/mod/fabric-api (version
    `0.165.0+26.3` or newer).
 2. Put **both** `chunkclaims-1.0.0.jar` and the Fabric API jar into the `mods` folder of:
    - the server, and
