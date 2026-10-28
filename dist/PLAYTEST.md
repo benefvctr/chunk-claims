@@ -7,16 +7,18 @@ server yet. Twenty minutes with two players will tell us if anything is off.
 
 You need Minecraft **26.3** with the Fabric Loader (0.20.1 or newer).
 
-1. Download `chunkclaims-1.0.0.jar` from https://github.com/benefvctr/chunk-claims/releases/latest
+1. Download `chunkclaims-1.0.1.jar` from https://github.com/benefvctr/chunk-claims/releases/latest
    and Fabric API for 26.3 from https://modrinth.com/mod/fabric-api (version
    `0.165.0+26.3` or newer).
-2. Put **both** `chunkclaims-1.0.0.jar` and the Fabric API jar into the `mods` folder of:
+2. Put **both** `chunkclaims-1.0.1.jar` and the Fabric API jar into the `mods` folder of:
    - the server, and
    - every player who wants the claim overlay and menu.
 3. Start the server once. It creates `config/chunkclaims.json` with the default prices.
    Change prices or the buffer there if you like, then restart.
 
-Use `chunkclaims-1.0.0.jar`, not `chunkclaims-1.0.0-sources.jar`.
+Use `chunkclaims-1.0.1.jar`, not `chunkclaims-1.0.1-sources.jar`. When updating, delete the
+old `chunkclaims-1.0.0.jar` from every `mods` folder first: two versions side by side stop
+the game from starting.
 
 ## Keys
 

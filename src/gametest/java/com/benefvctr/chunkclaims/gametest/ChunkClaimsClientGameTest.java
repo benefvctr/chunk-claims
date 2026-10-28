@@ -137,8 +137,41 @@ public class ChunkClaimsClientGameTest implements FabricClientGameTest {
 			connection.waitForClientboundPackets();
 			context.waitFor(mc -> mc.gui.screen() != null && mc.gui.screen().getClass().getSimpleName().equals("PermissionsScreen"), 100);
 			context.takeScreenshot("chunkclaims-04-permissions");
+
+			// Clicking the first row (Alex, sorted by name) trusts Alex in this cluster.
+			clickPermissionsRow(context, 0);
+			connection.waitForServerboundPackets();
+			connection.waitForClientboundPackets();
+			context.waitTicks(3);
+			server.runOnServer(s -> check(ClaimManager.current().registry().isAllowed(new ClaimPos(OVERWORLD, hx, hz), uuid("Alex")),
+					"clicking a row in the permissions menu trusts that player"));
+			context.takeScreenshot("chunkclaims-05-trusted");
+
+			// Double-clicking a name (the habit from the server and world lists) still trusts once.
+			clickPermissionsRow(context, 1);
+			context.getInput().pressMouse(0);
+			connection.waitForServerboundPackets();
+			connection.waitForClientboundPackets();
+			context.waitTicks(3);
+			server.runOnServer(s -> check(ClaimManager.current().registry().isAllowed(new ClaimPos(OVERWORLD, hx, hz), uuid("Casey")),
+					"double-clicking a name trusts that player instead of toggling twice"));
 			context.setScreen(() -> null);
 		}
+	}
+
+	/** Moves the real cursor onto a name in the open permissions menu and left-clicks it. */
+	static void clickPermissionsRow(ClientGameTestContext context, int row) {
+		double[] cursor = context.computeOnClient(mc -> {
+			var window = mc.getWindow();
+			// Window frame 252x140, list starts 18 + 18 below its top, rows are 16 tall.
+			double guiX = (window.getGuiScaledWidth() - 252) / 2 + 9 + 4 + 40;
+			double guiY = (window.getGuiScaledHeight() - 140) / 2 + 18 + 18 + row * 16 + 8;
+			double toScreen = (double) window.getScreenWidth() / window.getGuiScaledWidth();
+			return new double[] {guiX * toScreen, guiY * toScreen};
+		});
+		context.getInput().setCursorPos(cursor[0], cursor[1]);
+		context.waitTicks(2);
+		context.getInput().pressMouse(0);
 	}
 
 	/** Runs the grief attempts and returns the lava target position (checked after it has had time to flow). */

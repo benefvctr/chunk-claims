@@ -229,7 +229,11 @@ final class PermissionsScreen extends Screen {
 		}
 		int index = rowAt(event.x(), event.y());
 		if (index >= 0) {
-			toggle(visible.get(index));
+			// Players double-click names out of habit (server and world lists); the
+			// second click would quietly undo the first, so it is ignored.
+			if (!doubleClick) {
+				toggle(visible.get(index));
+			}
 			return true;
 		}
 		return false;

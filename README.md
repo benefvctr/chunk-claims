@@ -19,7 +19,7 @@ The full design and the reasoning behind each call is in
 
 ## Install
 
-One jar does both jobs. Download `chunkclaims-1.0.0.jar` from
+One jar does both jobs. Download `chunkclaims-1.0.1.jar` from
 [Releases](https://github.com/benefvctr/chunk-claims/releases/latest) and put it plus
 [Fabric API](https://modrinth.com/mod/fabric-api) `0.165.0+26.3` (or newer for 26.3) in:
 
